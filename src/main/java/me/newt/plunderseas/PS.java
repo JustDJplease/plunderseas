@@ -1,18 +1,22 @@
 package me.newt.plunderseas;
 
-import me.newt.plunderseas.plundering.UtilCreateOceanWorld;
+import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import java.util.logging.Logger;
+
 public class PS extends JavaPlugin {
-    
+
+    Logger logger;
+
     @Override
     public void onEnable() {
-        System.out.println("Creating world...");
-        System.out.println("Created: " + UtilCreateOceanWorld.createWorld().getName());
+        logger = Bukkit.getLogger();
+        logger.info("Enabling " + getDescription().getFullName());
     }
 
     @Override
     public void onDisable() {
-
+        logger.info("Disabling " + getDescription().getFullName());
     }
 }
