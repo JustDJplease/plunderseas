@@ -1,0 +1,10 @@
+name: ${project.name}
+version: ${project.version}
+description: ${project.description}
+
+authors: [Newt, PlunderSeas Staff]
+main: me.newt.plunderseas.PS
+website: https://github.com/JustDJplease/
+depend: [PreciousStones, Vault, FastAsyncWorldEdit]
+
+api-version: 1.13
