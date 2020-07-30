@@ -9,6 +9,10 @@ import java.util.UUID;
 
 public class UtilCreateOceanWorld {
 
+    /**
+     * Simple test for world generation.
+     * @return The created world.
+     */
     public static World createWorld() {
         UUID uuid = UUID.randomUUID();
         WorldCreator worldCreator = new WorldCreator("ocean_" + uuid);

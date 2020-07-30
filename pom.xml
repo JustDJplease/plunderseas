@@ -8,7 +8,7 @@
     <artifactId>plunderseas</artifactId>
     <version>PRERELEASE</version>
     <name>PlunderSeas</name>
-    <description>Game mechanics manager for PlunderSeas</description>
+    <description>Game design and mechanics for PlunderSeas.</description>
 
     <repositories>
         <repository>

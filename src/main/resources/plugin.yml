@@ -2,9 +2,9 @@ name: ${project.name}
 version: ${project.version}
 description: ${project.description}
 
-authors: [Newt, PlunderSeas Staff]
+authors: [Newt, Blu, PlunderSeas Staff]
 main: me.newt.plunderseas.PS
-website: https://github.com/JustDJplease/
+website: https://github.com/JustDJplease/plunderseas
 depend: [PreciousStones, Vault, FastAsyncWorldEdit]
 
 api-version: 1.13
