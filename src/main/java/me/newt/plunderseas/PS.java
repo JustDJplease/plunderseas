@@ -9,6 +9,12 @@ public class PS extends JavaPlugin {
 
     Logger logger;
 
+    // Soulpoints:
+    // - Soulpoint deduction upon death
+    // - Soulpoint regeneration every morning
+    // - Soulpoint display actionbar (money / rating as well)
+    // - Soulpoint saving (file)
+
     @Override
     public void onEnable() {
         logger = Bukkit.getLogger();
