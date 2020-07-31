@@ -3,7 +3,7 @@ version: ${project.version}
 description: ${project.description}
 
 authors: [Newt, Blu, PlunderSeas Staff]
-main: me.newt.plunderseas.PS
+main: me.newt.plunderseas.PlunderSeas
 website: https://github.com/JustDJplease/plunderseas
 depend: [PreciousStones, Vault, FastAsyncWorldEdit]
 

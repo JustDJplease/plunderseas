@@ -1,13 +1,11 @@
 package me.newt.plunderseas;
 
-import org.bukkit.Bukkit;
+import me.newt.plunderseas.storage.FileManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.logging.Logger;
+public class PlunderSeas extends JavaPlugin {
 
-public class PS extends JavaPlugin {
-
-    Logger logger;
+    private FileManager fileManager;
 
     // Soulpoints:
     // - Soulpoint deduction upon death
@@ -17,12 +15,14 @@ public class PS extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        logger = Bukkit.getLogger();
-        logger.info("Enabling " + getDescription().getFullName());
+        getLogger().info("Creating files...");
+        fileManager = new FileManager(this);
+        fileManager.createFolders();
+        fileManager.createConfigFile();
     }
 
     @Override
     public void onDisable() {
-        logger.info("Disabling " + getDescription().getFullName());
+
     }
 }
