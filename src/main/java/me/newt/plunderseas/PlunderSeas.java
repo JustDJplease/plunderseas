@@ -7,11 +7,19 @@ public class PlunderSeas extends JavaPlugin {
 
     private FileManager fileManager;
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    //                                    TASKLIST                                       //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     // Soulpoints:
     // - Soulpoint deduction upon death
     // - Soulpoint regeneration every morning
     // - Soulpoint display actionbar (money / rating as well)
-    // - Soulpoint saving (file)
+    // - [COMPLETED] Soulpoint saving (file & in memory)
+    // - Load player data on join
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    //                                    ENABLING                                       //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
     @Override
     public void onEnable() {
@@ -21,8 +29,20 @@ public class PlunderSeas extends JavaPlugin {
         fileManager.createConfigFile();
     }
 
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    //                                   DISABLING                                       //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
     @Override
     public void onDisable() {
 
+    }
+
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+    //                                  PUBLIC METHODS                                   //
+    // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
+
+    public FileManager getFileManager() {
+        return fileManager;
     }
 }
