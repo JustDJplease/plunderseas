@@ -1,12 +1,9 @@
 package me.newt.plunderseas;
 
-import me.newt.plunderseas.listeners.DeathHandler;
-import me.newt.plunderseas.listeners.JoinHandler;
-import me.newt.plunderseas.listeners.SunriseHandler;
+import me.newt.plunderseas.listeners.ListenerManager;
 import me.newt.plunderseas.runnables.RunnableManager;
 import me.newt.plunderseas.storage.FileManager;
 import me.newt.plunderseas.storage.PlayerDataManager;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PlunderSeas extends JavaPlugin {
@@ -14,6 +11,7 @@ public class PlunderSeas extends JavaPlugin {
     private FileManager fileManager;
     private PlayerDataManager playerDataManager;
     private RunnableManager runnableManager;
+    private ListenerManager listenerManager;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                    TASKLIST                                       //
@@ -45,10 +43,8 @@ public class PlunderSeas extends JavaPlugin {
         runnableManager.startRunnables();
 
         getLogger().info("Registering events...");
-        PluginManager pluginManager = getServer().getPluginManager();
-        pluginManager.registerEvents(new JoinHandler(this), this);
-        pluginManager.registerEvents(new DeathHandler(this), this);
-        pluginManager.registerEvents(new SunriseHandler(this), this);
+        listenerManager = new ListenerManager(this);
+        listenerManager.startListeners();
     }
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
@@ -74,5 +70,9 @@ public class PlunderSeas extends JavaPlugin {
 
     public RunnableManager getRunnableManager() {
         return runnableManager;
+    }
+
+    public ListenerManager getListenerManager() {
+        return listenerManager;
     }
 }

@@ -35,7 +35,7 @@ public class RunnableManager {
     }
 
     /**
-     * Ends all running tasks for this plugin.
+     * Stops all running tasks for this plugin.
      *
      * @deprecated Might break the plugin.
      */
