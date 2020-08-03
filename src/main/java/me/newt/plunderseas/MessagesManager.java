@@ -1,8 +1,6 @@
 package me.newt.plunderseas;
 
 import net.md_5.bungee.api.ChatColor;
-import net.md_5.bungee.api.chat.BaseComponent;
-import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class MessagesManager {
@@ -38,12 +36,5 @@ public class MessagesManager {
             return ChatColor.translateAlternateColorCodes('&', message);
         }
         return "missing_messages_" + id;
-    }
-
-    /**
-     * Get a formatted TextComponent from the messages.yml file.
-     */
-    public BaseComponent[] getComponentMessage(String id) {
-        return TextComponent.fromLegacyText(getMessage(id));
     }
 }

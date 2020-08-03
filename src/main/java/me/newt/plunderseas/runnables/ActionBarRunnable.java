@@ -29,7 +29,8 @@ public class ActionBarRunnable implements Runnable {
         for (Player player : plunderSeas.getServer().getOnlinePlayers()) {
             UUID uuid = player.getUniqueId();
             PlayerData playerData = plunderSeas.getPlayerDataManager().getPlayerData(uuid);
-            String actionBar = "§6§lSoulpoints: §e§l" + playerData.getSoulPoints();
+            String actionBar = plunderSeas.getMessagesManager().getMessage("actionbar");
+            actionBar = String.format(actionBar, playerData.getSoulPoints());
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(actionBar));
         }
     }
