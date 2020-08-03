@@ -26,14 +26,14 @@ public class PlunderSeasSunriseEvent extends Event {
     /**
      * Get the world in which the sunrise happened.
      */
-    public World getWorld(){
+    public World getWorld() {
         return world;
     }
 
     /**
      * Get the players currently residing in this world.
      */
-    public List<Player> getPlayersInWorld(){
+    public List<Player> getPlayersInWorld() {
         return world.getPlayers();
     }
 

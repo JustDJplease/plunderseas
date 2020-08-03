@@ -33,11 +33,12 @@ public class DeathHandler implements Listener {
 
         boolean shouldDropInventory = playerData.removeSoulPointAndShouldDie();
         if (shouldDropInventory) {
-            player.sendMessage("§cYou have died, ran out of soulpoints and dropped all your items.");
+            player.sendMessage(plunderSeas.getMessagesManager().getMessage("died_soulpoint_empty"));
+            player.sendMessage(plunderSeas.getMessagesManager().getMessage("died_items_have_dropped"));
         } else {
             event.setKeepInventory(true);
             event.setKeepLevel(true);
-            player.sendMessage("§cYou have died and lost a soulpoint.");
+            player.sendMessage(plunderSeas.getMessagesManager().getMessage("died_soulpoint_lost"));
         }
     }
 }

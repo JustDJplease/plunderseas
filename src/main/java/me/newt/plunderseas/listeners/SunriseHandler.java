@@ -29,11 +29,11 @@ public class SunriseHandler implements Listener {
     @EventHandler
     public void onSunrise(PlunderSeasSunriseEvent event) {
         List<Player> playerList = event.getPlayersInWorld();
-        for(Player player: playerList){
+        for (Player player : playerList) {
             UUID uuid = player.getUniqueId();
             PlayerData playerData = plunderSeas.getPlayerDataManager().getPlayerData(uuid);
             playerData.addSoulPoint();
-            player.sendMessage("§2Sunrise (+1 soulpoint)");
+            player.sendMessage(plunderSeas.getMessagesManager().getMessage("sunrise_soulpoint_gained"));
         }
     }
 }

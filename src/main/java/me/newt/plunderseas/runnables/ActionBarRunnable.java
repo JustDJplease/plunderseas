@@ -8,7 +8,7 @@ import org.bukkit.entity.Player;
 
 import java.util.UUID;
 
-public class ActionBarRunnable implements Runnable{
+public class ActionBarRunnable implements Runnable {
 
     private final PlunderSeas plunderSeas;
 
@@ -26,7 +26,7 @@ public class ActionBarRunnable implements Runnable{
 
     @Override
     public void run() {
-        for(Player player: plunderSeas.getServer().getOnlinePlayers()){
+        for (Player player : plunderSeas.getServer().getOnlinePlayers()) {
             UUID uuid = player.getUniqueId();
             PlayerData playerData = plunderSeas.getPlayerDataManager().getPlayerData(uuid);
             String actionBar = "§6§lSoulpoints: §e§l" + playerData.getSoulPoints();

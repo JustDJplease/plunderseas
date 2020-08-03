@@ -16,7 +16,7 @@ public class JoinHandler implements Listener {
     //                                    CONSTRUCTOR                                    //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-    public JoinHandler(PlunderSeas plunderSeas){
+    public JoinHandler(PlunderSeas plunderSeas) {
         this.plunderSeas = plunderSeas;
     }
 
@@ -25,7 +25,7 @@ public class JoinHandler implements Listener {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
     @EventHandler
-    public void onPlayerJoin(PlayerJoinEvent event){
+    public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         UUID uuid = player.getUniqueId();
         plunderSeas.getPlayerDataManager().getPlayerData(uuid);

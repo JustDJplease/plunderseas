@@ -14,6 +14,7 @@ public class FileManager {
 
     private final PlunderSeas plunderSeas;
     private final int configVersion = 1;
+    private final int messagesVersion = 1;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                    CONSTRUCTOR                                    //
@@ -47,9 +48,39 @@ public class FileManager {
         if (configVersion != currentConfigVersion) {
             plunderSeas.getLogger().severe("Encountered an outdated config.yml file!");
             plunderSeas.getLogger().severe("Please delete the file /plugins/PlunderSeas/config.yml and restart the server.");
-            plunderSeas.getLogger().severe("This plugin will disable itself.");
-            plunderSeas.getServer().getPluginManager().disablePlugin(plunderSeas);
         }
+    }
+
+    /**
+     * Creates the messages.yml file if it does not exist already.
+     */
+    public void createMessagesFile() {
+        File file = new File("/plugins/PlunderSeas", "messages.yml");
+        if (!file.exists()) {
+            plunderSeas.saveResource("messages.yml", false);
+        }
+
+        FileConfiguration messages = getMessagesFile();
+        int currentMessagesVersion = messages.getInt("version");
+
+        if (messagesVersion != currentMessagesVersion) {
+            plunderSeas.getLogger().severe("Encountered an outdated messages.yml file!");
+            plunderSeas.getLogger().severe("Please delete the file /plugins/PlunderSeas/messages.yml and restart the server.");
+        }
+    }
+
+    /**
+     * Get the configuration from inside the messages.yml file.
+     */
+    public FileConfiguration getMessagesFile() {
+        File file = new File("/plugins/PlunderSeas", "messages.yml");
+        FileConfiguration messages = new YamlConfiguration();
+        try {
+            messages.load(file);
+        } catch (IOException | InvalidConfigurationException ex) {
+            ex.printStackTrace();
+        }
+        return messages;
     }
 
     /**

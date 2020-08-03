@@ -9,9 +9,11 @@ import org.bukkit.plugin.java.JavaPlugin;
 public class PlunderSeas extends JavaPlugin {
 
     private FileManager fileManager;
+    private MessagesManager messagesManager;
     private PlayerDataManager playerDataManager;
     private RunnableManager runnableManager;
     private ListenerManager listenerManager;
+
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                    TASKLIST                                       //
@@ -30,6 +32,10 @@ public class PlunderSeas extends JavaPlugin {
         fileManager = new FileManager(this);
         fileManager.createFolders();
         fileManager.createConfigFile();
+        fileManager.createMessagesFile();
+
+        messagesManager = new MessagesManager(this);
+        messagesManager.loadMessages();
 
         getLogger().info("Loading player data...");
         playerDataManager = new PlayerDataManager(this);
@@ -58,6 +64,10 @@ public class PlunderSeas extends JavaPlugin {
 
     public FileManager getFileManager() {
         return fileManager;
+    }
+
+    public MessagesManager getMessagesManager() {
+        return messagesManager;
     }
 
     public PlayerDataManager getPlayerDataManager() {
