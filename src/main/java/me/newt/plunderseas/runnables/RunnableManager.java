@@ -31,7 +31,10 @@ public class RunnableManager {
     public void startRunnables() {
         BukkitScheduler scheduler = plunderSeas.getServer().getScheduler();
         BukkitTask worldTimeRunnable = scheduler.runTaskTimer(plunderSeas, new WorldTimeRunnable(plunderSeas), 1L, 1L);
+        BukkitTask actionBarRunnable = scheduler.runTaskTimer(plunderSeas, new ActionBarRunnable(plunderSeas), 1L, 1L);
+
         runnables.add(worldTimeRunnable);
+        runnables.add(actionBarRunnable);
     }
 
     /**
