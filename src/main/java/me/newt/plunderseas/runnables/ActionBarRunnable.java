@@ -1,16 +1,14 @@
-package me.newt.plunderseas.listeners;
+package me.newt.plunderseas.runnables;
 
 import me.newt.plunderseas.PlunderSeas;
-import me.newt.plunderseas.events.PlunderSeasSunriseEvent;
 import me.newt.plunderseas.storage.PlayerData;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
 
-import java.util.List;
 import java.util.UUID;
 
-public class SunriseHandler implements Listener {
+public class ActionBarRunnable implements Runnable{
 
     private final PlunderSeas plunderSeas;
 
@@ -18,22 +16,21 @@ public class SunriseHandler implements Listener {
     //                                    CONSTRUCTOR                                    //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-    public SunriseHandler(PlunderSeas plunderSeas) {
+    public ActionBarRunnable(PlunderSeas plunderSeas) {
         this.plunderSeas = plunderSeas;
     }
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-    //                                  EVENT HANDLER                                    //
+    //                                     RUNNABLE                                      //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
-    @EventHandler
-    public void onSunrise(PlunderSeasSunriseEvent event) {
-        List<Player> playerList = event.getPlayersInWorld();
-        for(Player player: playerList){
+    @Override
+    public void run() {
+        for(Player player: plunderSeas.getServer().getOnlinePlayers()){
             UUID uuid = player.getUniqueId();
             PlayerData playerData = plunderSeas.getPlayerDataManager().getPlayerData(uuid);
-            playerData.addSoulPoint();
-            player.sendMessage("§2Sunrise (+1 soulpoint)");
+            String actionBar = "§6§lSoulpoints: §e§l" + playerData.getSoulPoints();
+            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(actionBar));
         }
     }
 }

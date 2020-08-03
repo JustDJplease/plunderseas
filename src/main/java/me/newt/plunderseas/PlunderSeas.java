@@ -19,12 +19,8 @@ public class PlunderSeas extends JavaPlugin {
     //                                    TASKLIST                                       //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     // Soulpoints:
-    // - [COMPLETED] Soulpoint deduction upon death
-    // - Soulpoint regeneration every morning
-    // - Soulpoint display actionbar (money / rating as well)
-    // - [COMPLETED] Soulpoint saving (file & in memory)
-    // - [COMPLETED] Load player data on join
-    // - [COMPLETED] New day event for every overworld
+    // - money / rating in ACTIONBAR
+    // - Message file
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                    ENABLING                                       //
