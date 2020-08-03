@@ -10,7 +10,7 @@ import java.util.UUID;
 
 public class JoinHandler implements Listener {
 
-    private PlunderSeas plunderSeas;
+    private final PlunderSeas plunderSeas;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                    CONSTRUCTOR                                    //

@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class DeathHandler implements Listener {
 
-    private PlunderSeas plunderSeas;
+    private final PlunderSeas plunderSeas;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                    CONSTRUCTOR                                    //

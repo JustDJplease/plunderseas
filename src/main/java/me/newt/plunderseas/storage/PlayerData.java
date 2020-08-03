@@ -7,8 +7,8 @@ import java.util.UUID;
 
 public class PlayerData {
 
-    private PlunderSeas plunderSeas;
-    private UUID uuid;
+    private final PlunderSeas plunderSeas;
+    private final UUID uuid;
     private int soulpoints;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //

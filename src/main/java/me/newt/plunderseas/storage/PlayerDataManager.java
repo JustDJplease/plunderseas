@@ -7,8 +7,8 @@ import java.util.UUID;
 
 public class PlayerDataManager {
 
-    private PlunderSeas plunderSeas;
-    private HashMap<UUID, PlayerData> onlinePlayersData;
+    private final PlunderSeas plunderSeas;
+    private final HashMap<UUID, PlayerData> onlinePlayersData;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                    CONSTRUCTOR                                    //

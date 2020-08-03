@@ -12,8 +12,8 @@ import java.util.UUID;
 @SuppressWarnings("ResultOfMethodCallIgnored")
 public class FileManager {
 
-    private PlunderSeas plunderSeas;
-    private int configVersion = 1;
+    private final PlunderSeas plunderSeas;
+    private final int configVersion = 1;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                    CONSTRUCTOR                                    //
