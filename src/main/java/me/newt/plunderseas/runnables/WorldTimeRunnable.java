@@ -22,14 +22,14 @@ public class WorldTimeRunnable implements Runnable {
 
     @Override
     public void run() {
-        for (World world : plunderSeas.getServer().getWorlds()) {
+        plunderSeas.getServer().getWorlds().forEach(world -> {
             if (world.getEnvironment() != World.Environment.NORMAL) {
-                continue;
+                return;
             }
             long currentTime = world.getTime();
             if (currentTime == 1000) {
                 plunderSeas.getServer().getPluginManager().callEvent(new PlunderSeasSunriseEvent(world));
             }
-        }
+        });
     }
 }

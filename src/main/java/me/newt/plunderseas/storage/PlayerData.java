@@ -65,7 +65,7 @@ public class PlayerData {
         if (soulpoints < 1) {
             soulpoints = 1;
         }
-        plunderSeas.getFileManager().savePlayerData(uuid, this);
+        plunderSeas.getFileManager().savePlayerDataToFile(uuid, this);
     }
 
     /**
@@ -78,7 +78,7 @@ public class PlayerData {
         if (soulpoints < 1) {
             // Player dies.
             soulpoints = max_soulpoints;
-            plunderSeas.getFileManager().savePlayerData(uuid, this);
+            plunderSeas.getFileManager().savePlayerDataToFile(uuid, this);
             return true;
         } else if (soulpoints > max_soulpoints) {
             // If it somehow bugged.
@@ -86,7 +86,7 @@ public class PlayerData {
         }
 
         // Player does not die.
-        plunderSeas.getFileManager().savePlayerData(uuid, this);
+        plunderSeas.getFileManager().savePlayerDataToFile(uuid, this);
         return false;
 
     }

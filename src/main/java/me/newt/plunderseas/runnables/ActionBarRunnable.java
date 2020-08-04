@@ -4,13 +4,11 @@ import me.newt.plunderseas.PlunderSeas;
 import me.newt.plunderseas.storage.PlayerData;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.bukkit.entity.Player;
-
-import java.util.UUID;
 
 public class ActionBarRunnable implements Runnable {
 
     private final PlunderSeas plunderSeas;
+    private final String actionBar;
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                    CONSTRUCTOR                                    //
@@ -18,6 +16,8 @@ public class ActionBarRunnable implements Runnable {
 
     public ActionBarRunnable(PlunderSeas plunderSeas) {
         this.plunderSeas = plunderSeas;
+        this.actionBar = plunderSeas.getMessagesManager().getMessage("actionbar");
+
     }
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
@@ -26,12 +26,11 @@ public class ActionBarRunnable implements Runnable {
 
     @Override
     public void run() {
-        for (Player player : plunderSeas.getServer().getOnlinePlayers()) {
-            UUID uuid = player.getUniqueId();
-            PlayerData playerData = plunderSeas.getPlayerDataManager().getPlayerData(uuid);
-            String actionBar = plunderSeas.getMessagesManager().getMessage("actionbar");
-            actionBar = String.format(actionBar, playerData.getSoulPoints());
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(actionBar));
-        }
+        plunderSeas.getServer().getOnlinePlayers().forEach(player -> {
+            PlayerData playerData = plunderSeas.getPlayerDataManager().getPlayerData(player);
+            String formattedActionBar = actionBar;
+            formattedActionBar = String.format(formattedActionBar, playerData.getSoulPoints());
+            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(formattedActionBar));
+        });
     }
 }

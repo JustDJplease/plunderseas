@@ -7,8 +7,6 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
-import java.util.UUID;
-
 public class DeathHandler implements Listener {
 
     private final PlunderSeas plunderSeas;
@@ -28,17 +26,16 @@ public class DeathHandler implements Listener {
     @EventHandler
     public void onPlayerDeath(PlayerDeathEvent event) {
         Player player = event.getEntity();
-        UUID uuid = player.getUniqueId();
-        PlayerData playerData = plunderSeas.getPlayerDataManager().getPlayerData(uuid);
+        PlayerData playerData = plunderSeas.getPlayerDataManager().getPlayerData(player);
 
         boolean shouldDropInventory = playerData.removeSoulPointAndShouldDie();
         if (shouldDropInventory) {
             player.sendMessage(plunderSeas.getMessagesManager().getMessage("died_soulpoint_empty"));
             player.sendMessage(plunderSeas.getMessagesManager().getMessage("died_items_have_dropped"));
         } else {
+            player.sendMessage(plunderSeas.getMessagesManager().getMessage("died_soulpoint_lost"));
             event.setKeepInventory(true);
             event.setKeepLevel(true);
-            player.sendMessage(plunderSeas.getMessagesManager().getMessage("died_soulpoint_lost"));
         }
     }
 }

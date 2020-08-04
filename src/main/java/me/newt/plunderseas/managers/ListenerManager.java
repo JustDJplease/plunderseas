@@ -1,6 +1,9 @@
-package me.newt.plunderseas.listeners;
+package me.newt.plunderseas.managers;
 
 import me.newt.plunderseas.PlunderSeas;
+import me.newt.plunderseas.listeners.DeathHandler;
+import me.newt.plunderseas.listeners.JoinHandler;
+import me.newt.plunderseas.listeners.SunriseHandler;
 import org.bukkit.plugin.PluginManager;
 
 public class ListenerManager {
@@ -14,6 +17,7 @@ public class ListenerManager {
     public ListenerManager(PlunderSeas plunderSeas) {
         this.plunderSeas = plunderSeas;
     }
+
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                  PUBLIC METHODS                                   //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //

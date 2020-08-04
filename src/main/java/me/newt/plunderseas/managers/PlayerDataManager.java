@@ -1,6 +1,8 @@
-package me.newt.plunderseas.storage;
+package me.newt.plunderseas.managers;
 
 import me.newt.plunderseas.PlunderSeas;
+import me.newt.plunderseas.storage.PlayerData;
+import org.bukkit.entity.Player;
 
 import java.util.HashMap;
 import java.util.UUID;
@@ -24,25 +26,34 @@ public class PlayerDataManager {
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
 
     /**
+     * Get PlayerData for a given player.
+     */
+    public PlayerData getPlayerData(Player player) {
+        return getPlayerData(player.getUniqueId());
+    }
+
+    /**
      * Get PlayerData for a given player's uuid.
      */
     public PlayerData getPlayerData(UUID uuid) {
 
+        // Check if the playerData is already loaded.
         if (onlinePlayersData.containsKey(uuid)) {
-            // The PlayerData is already loaded in memory.
             return onlinePlayersData.get(uuid);
+        }
 
-        } else if (hasExistingPlayerData(uuid)) {
-            // The PlayerData needs to be loaded from a file that exists already.
-            PlayerData playerData = plunderSeas.getFileManager().loadPlayerData(uuid);
+        // Check if we can load playerData from file.
+        else if (hasExistingPlayerData(uuid)) {
+            PlayerData playerData = plunderSeas.getFileManager().getPlayerDataFromFile(uuid);
             onlinePlayersData.put(uuid, playerData);
             return playerData;
+        }
 
-        } else {
-            // The PlayerData needs to be created new as there is no file yet.
+        // Create new playerData and file.
+        else {
             PlayerData playerData = new PlayerData(plunderSeas, uuid);
             onlinePlayersData.put(uuid, playerData);
-            plunderSeas.getFileManager().savePlayerData(uuid, playerData);
+            plunderSeas.getFileManager().savePlayerDataToFile(uuid, playerData);
             return playerData;
         }
     }
@@ -55,6 +66,6 @@ public class PlayerDataManager {
      * Check if this player has existing PlayerData.
      */
     private boolean hasExistingPlayerData(UUID uuid) {
-        return plunderSeas.getFileManager().hasPlayerData(uuid);
+        return plunderSeas.getFileManager().hasPlayerDataFile(uuid);
     }
 }

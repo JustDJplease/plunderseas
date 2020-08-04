@@ -1,18 +1,15 @@
 package me.newt.plunderseas;
 
-import me.newt.plunderseas.listeners.ListenerManager;
-import me.newt.plunderseas.runnables.RunnableManager;
-import me.newt.plunderseas.storage.FileManager;
-import me.newt.plunderseas.storage.PlayerDataManager;
+import me.newt.plunderseas.managers.*;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PlunderSeas extends JavaPlugin {
 
     private FileManager fileManager;
+    private ListenerManager listenerManager;
     private MessagesManager messagesManager;
     private PlayerDataManager playerDataManager;
     private RunnableManager runnableManager;
-    private ListenerManager listenerManager;
 
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
@@ -73,9 +70,7 @@ public class PlunderSeas extends JavaPlugin {
     public void onEnable() {
         getLogger().info("Creating files...");
         fileManager = new FileManager(this);
-        fileManager.createFolders();
-        fileManager.createConfigFile();
-        fileManager.createMessagesFile();
+        fileManager.createNecessaryFiles();
 
         messagesManager = new MessagesManager(this);
         messagesManager.loadMessages();
@@ -109,6 +104,10 @@ public class PlunderSeas extends JavaPlugin {
         return fileManager;
     }
 
+    public ListenerManager getListenerManager() {
+        return listenerManager;
+    }
+
     public MessagesManager getMessagesManager() {
         return messagesManager;
     }
@@ -119,9 +118,5 @@ public class PlunderSeas extends JavaPlugin {
 
     public RunnableManager getRunnableManager() {
         return runnableManager;
-    }
-
-    public ListenerManager getListenerManager() {
-        return listenerManager;
     }
 }
