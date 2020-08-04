@@ -11,7 +11,7 @@ public class MessagesManager {
 
     private final PlunderSeas plunderSeas;
     private FileConfiguration messages;
-    private final Pattern hexColourPattern = Pattern.compile("(?<!\\\\)(#[a-fA-F0-9]{6})");
+    public final char COLOR_CHAR = ChatColor.COLOR_CHAR;
 
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
@@ -41,7 +41,9 @@ public class MessagesManager {
 
         // Check if there is a message with this id.
         if (message != null) {
-            return translateColour(ChatColor.translateAlternateColorCodes('&', message));
+            message = translateHexColorCodes(message);
+            message = ChatColor.translateAlternateColorCodes('&', message);
+            return message;
         }
 
         return "missing_messages_" + id;
@@ -54,13 +56,18 @@ public class MessagesManager {
     /**
      * Translate HEX colour codes.
      */
-    private String translateColour(String message) {
-        Matcher matcher = hexColourPattern.matcher(message);
-
+    private String translateHexColorCodes(String message) {
+        final Pattern hexPattern = Pattern.compile("<#([A-Fa-f0-9]{6})>");
+        Matcher matcher = hexPattern.matcher(message);
+        StringBuffer buffer = new StringBuffer(message.length() + 4 * 8);
         while (matcher.find()) {
-            String color = message.substring(matcher.start(), matcher.end());
-            message = message.replace(color, "" + ChatColor.of(color));
+            String group = matcher.group(1);
+            matcher.appendReplacement(buffer, COLOR_CHAR + "x"
+                    + COLOR_CHAR + group.charAt(0) + COLOR_CHAR + group.charAt(1)
+                    + COLOR_CHAR + group.charAt(2) + COLOR_CHAR + group.charAt(3)
+                    + COLOR_CHAR + group.charAt(4) + COLOR_CHAR + group.charAt(5)
+            );
         }
-        return message;
+        return matcher.appendTail(buffer).toString();
     }
 }

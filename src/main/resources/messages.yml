@@ -3,13 +3,13 @@
 #                         by Newt & Blu                           #
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ #
 
-# You can use custom colour-codes in the text below. (&0 and #000000)
+# You can use custom colour-codes in the text below. (&0 and <#000000>)
 messages:
-   died_soulpoint_lost: "#6d32a8You have died and lost one soul \u2620.)"
-   died_soulpoint_empty: "#6d32a8You have died and had no more souls remaining \u2620.)"
-   died_items_have_dropped: "#6d32a8All your items have been dropped.)"
-   sunrise_soulpoint_gained: "#6d32a8Sunrise! You have gained one soul \u2620.)"
-   actionbar: "#6d32a8Souls: {0} \u2620"
+   died_soulpoint_lost: "<#6d32a8>You have died and lost one soul <#ffffff>\u2620<#6d32a8>."
+   died_soulpoint_empty: "<#6d32a8>You have died and had no more souls remaining <#ffffff>\u2620<#6d32a8>."
+   died_items_have_dropped: "<#6d32a8>All your items have been dropped."
+   sunrise_soulpoint_gained: "<#6d32a8>Sunrise! You have gained one soul <#ffffff>\u2620<#6d32a8>."
+   actionbar: "<#6d32a8>&lSouls:<#6d32a8> {0} <#ffffff>\u2620"
 
 # You are have completed configuring this plugin!
 # Do not modify the following:
