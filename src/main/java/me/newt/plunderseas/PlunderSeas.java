@@ -1,6 +1,8 @@
 package me.newt.plunderseas;
 
 import me.newt.plunderseas.managers.*;
+import net.milkbowl.vault.economy.Economy;
+import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PlunderSeas extends JavaPlugin {
@@ -10,14 +12,12 @@ public class PlunderSeas extends JavaPlugin {
     private MessagesManager messagesManager;
     private PlayerDataManager playerDataManager;
     private RunnableManager runnableManager;
+    private Economy economyManager;
 
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
     //                                    TASKLIST                                       //
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
-    // Currency:
-    // - Hook into vault.
-    //
     // Adventuring & Shipwrecks
     // - Shipwreck chests regenerate.
     // - Looting yields cash.
@@ -68,23 +68,33 @@ public class PlunderSeas extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        getLogger().info("Creating files...");
+        getLogger().info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+        getLogger().info("Startup: Creating necessary files...");
         fileManager = new FileManager(this);
         fileManager.createNecessaryFiles();
 
+        getLogger().info("Startup: Loading messages...");
         messagesManager = new MessagesManager(this);
         messagesManager.loadMessages();
 
-        getLogger().info("Loading player data...");
+        getLogger().info("Startup: Loading player data...");
         playerDataManager = new PlayerDataManager(this);
 
-        getLogger().info("Starting tasks...");
+        getLogger().info("Startup: Hooking into vault...");
+        RegisteredServiceProvider<Economy> serviceProvider = getServer().getServicesManager().getRegistration(Economy.class);
+        assert serviceProvider != null : "Missing a plugin that manages economy (like Essentials)";
+        economyManager = serviceProvider.getProvider();
+
+        getLogger().info("Startup: Starting scheduled tasks...");
         runnableManager = new RunnableManager(this);
         runnableManager.startRunnables();
 
-        getLogger().info("Registering events...");
+        getLogger().info("Startup: Listening for events...");
         listenerManager = new ListenerManager(this);
         listenerManager.startListeners();
+
+        getLogger().info("Startup: Completed!");
+        getLogger().info("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     }
 
     // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ //
@@ -118,5 +128,9 @@ public class PlunderSeas extends JavaPlugin {
 
     public RunnableManager getRunnableManager() {
         return runnableManager;
+    }
+
+    public Economy getEconomyManager() {
+        return economyManager;
     }
 }

@@ -9,7 +9,7 @@ messages:
    died_soulpoint_empty: "<#6d32a8>You have died and had no more souls remaining <#ffffff>\u2620<#6d32a8>."
    died_items_have_dropped: "<#6d32a8>All your items have been dropped."
    sunrise_soulpoint_gained: "<#6d32a8>Sunrise! You have gained one soul <#ffffff>\u2620<#6d32a8>."
-   actionbar: "<#6d32a8>&lSouls:<#6d32a8> {0} <#ffffff>\u2620"
+   actionbar: "<#6d32a8>&lSouls:<#6d32a8> {0} <#ffffff>\u2620 &8- <#f59e42>&lCoins:<#f59e42> {1} <#ffffff>\u26C3"
 
 # You are have completed configuring this plugin!
 # Do not modify the following:
