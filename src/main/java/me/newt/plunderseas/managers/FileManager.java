@@ -42,7 +42,7 @@ public class FileManager {
      * Gets the yamlConfiguration from the messages file.
      */
     public FileConfiguration getMessagesFile() {
-        File file = new File("/plugins/PlunderSeas", "messages.yml");
+        File file = new File("plugins/PlunderSeas", "messages.yml");
         return loadYAML(file);
     }
 
@@ -50,7 +50,7 @@ public class FileManager {
      * Gets the playerData from a file.
      */
     public PlayerData getPlayerDataFromFile(UUID uuid) {
-        File file = new File("/plugins/PlunderSeas/data", uuid + ".yml");
+        File file = new File("plugins/PlunderSeas/data", uuid + ".yml");
         return new PlayerData(plunderSeas, uuid, loadYAML(file));
     }
 
@@ -58,12 +58,12 @@ public class FileManager {
      * Saves the playerData to a file.
      */
     public void savePlayerDataToFile(UUID uuid, PlayerData playerData) {
-        File file = new File("/plugins/PlunderSeas/data", uuid + ".yml");
+        File file = new File("plugins/PlunderSeas/data", uuid + ".yml");
 
         if (!file.exists()) {
             // No file existing currently.
             plunderSeas.saveResource("template_playerdata.yml", false);
-            File template = new File("/plugins/PlunderSeas/data", "template_playerdata.yml");
+            File template = new File("plugins/PlunderSeas", "template_playerdata.yml");
             template.renameTo(file);
             return;
         }
@@ -78,7 +78,7 @@ public class FileManager {
      * Check if there is a file with playerData for this player.
      */
     public boolean hasPlayerDataFile(UUID uuid) {
-        File file = new File("/plugins/PlunderSeas/data", uuid + ".yml");
+        File file = new File("plugins/PlunderSeas/data", uuid + ".yml");
         return file.exists();
     }
 
@@ -90,7 +90,7 @@ public class FileManager {
      * Creates necessary folders (if non-existent).
      */
     private void createFolders() {
-        File folder = new File("/plugins/PlunderSeas/data");
+        File folder = new File("plugins/PlunderSeas/data");
         if (!folder.exists()) {
             folder.mkdirs();
         }
@@ -114,7 +114,7 @@ public class FileManager {
      * Creates necessary messages.yml (if non-existent).
      */
     private void createMessagesFile() {
-        File file = new File("/plugins/PlunderSeas", "messages.yml");
+        File file = new File("plugins/PlunderSeas", "messages.yml");
         if (!file.exists()) {
             plunderSeas.saveResource("messages.yml", false);
         }

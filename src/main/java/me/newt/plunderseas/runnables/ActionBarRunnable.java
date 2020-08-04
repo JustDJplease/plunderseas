@@ -29,7 +29,7 @@ public class ActionBarRunnable implements Runnable {
         plunderSeas.getServer().getOnlinePlayers().forEach(player -> {
             PlayerData playerData = plunderSeas.getPlayerDataManager().getPlayerData(player);
             String formattedActionBar = actionBar;
-            formattedActionBar = String.format(formattedActionBar, playerData.getSoulPoints());
+            formattedActionBar = formattedActionBar.replace("{0}", "" + playerData.getSoulPoints());
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(formattedActionBar));
         });
     }
