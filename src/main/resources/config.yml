@@ -6,6 +6,9 @@
 # What should be the maximum amount of souls a player has?
 max_soulpoints: 3
 
+# What should be the name of the off-map ocean world islands are pasted to?
+offmap_world_name: "ocean"
+
 # You are have completed configuring this plugin!
 # Do not modify the following:
 version: 1
