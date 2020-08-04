@@ -10,6 +10,10 @@
     <name>PlunderSeas</name>
     <description>Game design and mechanics for PlunderSeas.</description>
 
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
     <repositories>
         <repository>
             <id>spigot-repo</id>
